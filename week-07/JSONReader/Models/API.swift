@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct APIJSONData: Codable {
+    var count: Int
+    var entries: [API]
+}
+
 struct API: Identifiable, Codable {
     let id = UUID()
     var name: String

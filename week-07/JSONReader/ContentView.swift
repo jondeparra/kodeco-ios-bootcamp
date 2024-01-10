@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var store = APIStore()
+    @ObservedObject var apiStore = APIStore()
+    @ObservedObject var userStore = UserStore()
     @State private var errorMessage: String?
-    @State private var showingSheet = false
 
     var body: some View {
-        VStack {
+        TabView {
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
             } else {
                 NavigationStack {
                     List {
-                        ForEach(store.apis) { api in
+                        ForEach(apiStore.apis) { api in
                             NavigationLink(api.name) {
                                 APIDetails(api: api)
                                     .navigationTitle(api.name)
@@ -30,16 +30,27 @@ struct ContentView: View {
                     }
                     .navigationTitle("APIs")
                 }
+                .tabItem {
+                    Label("APIs", systemImage: "network")
+                }
+                .onAppear {
+                    loadAPIList()
+                }
             }
-        }
-        .onAppear {
-            loadAPIList()
+
+            NavigationStack {
+                UserDetails(user: userStore.users.first!)
+                .navigationTitle("User Details")
+            }
+            .tabItem {
+                Label("User", systemImage: "person")
+            }
         }
     }
 
     private func loadAPIList() {
         do {
-            try store.loadData()
+            try apiStore.loadData()
         } catch DataLoadingError.fileNotFound {
             errorMessage = "Error: apilist.json file not found."
         } catch {
@@ -48,6 +59,10 @@ struct ContentView: View {
     }
 }
 
+enum DataLoadingError: Error {
+    case fileNotFound
+}
+
 #Preview {
-    ContentView(store: APIStore())
+    ContentView(apiStore: APIStore())
 }

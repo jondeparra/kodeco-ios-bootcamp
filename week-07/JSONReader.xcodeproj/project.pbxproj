@@ -17,9 +17,10 @@
 		680FE13C2B4D165800D170FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 680FE13B2B4D165800D170FD /* README.md */; };
 		68B714672B4E4BC5004EDCC1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B714662B4E4BC5004EDCC1 /* API.swift */; };
 		68B714692B4E4D67004EDCC1 /* APIStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B714682B4E4D67004EDCC1 /* APIStore.swift */; };
-		68B7146B2B4E5105004EDCC1 /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7146A2B4E5105004EDCC1 /* APICollection.swift */; };
 		68B7146E2B4E5FFD004EDCC1 /* APIDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7146D2B4E5FFD004EDCC1 /* APIDetails.swift */; };
-		68B714712B4E860E004EDCC1 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B714702B4E860E004EDCC1 /* FileManager.swift */; };
+		68B714732B4F3DC0004EDCC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B714722B4F3DC0004EDCC1 /* User.swift */; };
+		68B714752B4F3F52004EDCC1 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B714742B4F3F52004EDCC1 /* UserStore.swift */; };
+		68B714772B4F4422004EDCC1 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B714762B4F4422004EDCC1 /* UserDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +35,10 @@
 		680FE13B2B4D165800D170FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		68B714662B4E4BC5004EDCC1 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		68B714682B4E4D67004EDCC1 /* APIStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStore.swift; sourceTree = "<group>"; };
-		68B7146A2B4E5105004EDCC1 /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
 		68B7146D2B4E5FFD004EDCC1 /* APIDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDetails.swift; sourceTree = "<group>"; };
-		68B714702B4E860E004EDCC1 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		68B714722B4F3DC0004EDCC1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		68B714742B4F3F52004EDCC1 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		68B714762B4F4422004EDCC1 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,7 @@
 				68093ED42B4D0DF800705381 /* AppMain.swift */,
 				68093ED62B4D0DF800705381 /* ContentView.swift */,
 				68B7146D2B4E5FFD004EDCC1 /* APIDetails.swift */,
-				68B7146F2B4E85F6004EDCC1 /* Extensions */,
+				68B714762B4F4422004EDCC1 /* UserDetails.swift */,
 				68B7146C2B4E5E4C004EDCC1 /* Stores */,
 				68B714652B4E4BA7004EDCC1 /* Models */,
 				680FE13B2B4D165800D170FD /* README.md */,
@@ -97,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				68B714662B4E4BC5004EDCC1 /* API.swift */,
-				68B7146A2B4E5105004EDCC1 /* APICollection.swift */,
+				68B714722B4F3DC0004EDCC1 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,16 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				68B714682B4E4D67004EDCC1 /* APIStore.swift */,
+				68B714742B4F3F52004EDCC1 /* UserStore.swift */,
 			);
 			path = Stores;
-			sourceTree = "<group>";
-		};
-		68B7146F2B4E85F6004EDCC1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				68B714702B4E860E004EDCC1 /* FileManager.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,12 +188,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B714692B4E4D67004EDCC1 /* APIStore.swift in Sources */,
+				68B714772B4F4422004EDCC1 /* UserDetails.swift in Sources */,
+				68B714752B4F3F52004EDCC1 /* UserStore.swift in Sources */,
 				68B7146E2B4E5FFD004EDCC1 /* APIDetails.swift in Sources */,
 				68093ED72B4D0DF800705381 /* ContentView.swift in Sources */,
-				68B714712B4E860E004EDCC1 /* FileManager.swift in Sources */,
 				68B714672B4E4BC5004EDCC1 /* API.swift in Sources */,
 				68093ED52B4D0DF800705381 /* AppMain.swift in Sources */,
-				68B7146B2B4E5105004EDCC1 /* APICollection.swift in Sources */,
+				68B714732B4F3DC0004EDCC1 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
