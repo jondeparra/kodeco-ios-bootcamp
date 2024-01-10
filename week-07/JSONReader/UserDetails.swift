@@ -29,6 +29,7 @@ struct UserDetails: View {
                         Text(user.name.first + " " + user.name.last)
                             .fontWeight(.semibold)
                         Text(user.email)
+                            .font(.subheadline)
                     }
                 }
 
