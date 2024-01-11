@@ -17,6 +17,7 @@ struct ContentView: View {
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
+                    .font(.headline)
             } else {
                 NavigationStack {
                     List {
