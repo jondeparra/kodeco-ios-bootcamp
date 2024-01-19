@@ -68,7 +68,7 @@ o) Show the line of code used to access the user’s document directory for the 
 
 p) Files added to the project that will be used by the app can be found in the ____________ ____________ when the app is running.
 
-Bundle.main URL
+The Bundle.main URL
 
 ### Part 2 - Programming assignment
 
