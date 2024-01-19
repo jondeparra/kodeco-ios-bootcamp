@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var apiStore = APIStore()
-    @ObservedObject var userStore = UserStore()
+    @StateObject var apiStore = APIStore()
+    @StateObject var userStore = UserStore()
     @State private var errorMessage: String?
 
     var body: some View {
