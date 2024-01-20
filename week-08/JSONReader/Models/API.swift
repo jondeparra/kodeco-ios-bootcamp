@@ -10,6 +10,16 @@ import Foundation
 struct APIJSONData: Codable {
     var count: Int
     var entries: [API]
+
+    enum CodingKeys: String, CodingKey {
+        case count, entries
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(count, forKey: .count)
+        try container.encode(entries, forKey: .entries)
+    }
 }
 
 struct API: Identifiable, Codable {

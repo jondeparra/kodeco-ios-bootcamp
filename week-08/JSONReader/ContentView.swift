@@ -11,15 +11,16 @@ struct ContentView: View {
     @StateObject var apiStore = APIStore()
     @StateObject var userStore = UserStore()
     @State private var errorMessage: String?
+    @State private var showAlert = false
+    @State private var isLoading = false
 
     var body: some View {
         TabView {
-            if let errorMessage = errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-                    .font(.headline)
-            } else {
-                NavigationStack {
+            NavigationStack {
+                if isLoading {
+                    ProgressView("Loading APIs...")
+                        .navigationTitle("APIs")
+                } else {
                     List {
                         ForEach(apiStore.apis) { api in
                             NavigationLink(api.name) {
@@ -31,37 +32,52 @@ struct ContentView: View {
                     }
                     .navigationTitle("APIs")
                 }
-                .tabItem {
-                    Label("APIs", systemImage: "network")
-                }
-                .onAppear {
-                    loadAPIList()
+            }
+            .tabItem {
+                Label("APIs", systemImage: "network")
+            }
+            .onAppear {
+                Task {
+                    await loadAPIList()
                 }
             }
 
             NavigationStack {
                 UserDetails(user: userStore.users.first!)
-                .navigationTitle("User Details")
+                    .navigationTitle("User Details")
             }
             .tabItem {
                 Label("User", systemImage: "person")
             }
         }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(errorMessage!),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 
-    private func loadAPIList() {
+    private func loadAPIList() async {
+        isLoading = true
         do {
-            try apiStore.loadData()
+            try await apiStore.loadData()
         } catch DataLoadingError.fileNotFound {
             errorMessage = "Error: apilist.json file not found."
+            showAlert = true
         } catch {
             errorMessage = "An unexpected error occurred."
+            showAlert = true
         }
+        isLoading = false
     }
 }
 
 enum DataLoadingError: Error {
     case fileNotFound
+    case invalidURL
+    case networkError
 }
 
 #Preview {
