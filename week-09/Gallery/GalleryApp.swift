@@ -2,7 +2,7 @@
 //  GalleryApp.swift
 //  Gallery
 //
-//  Created by Jonathan Parra on 1/27/24.
+//  Created by Jonathan Parra on 1/31/24.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct GalleryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchView()
         }
     }
 }
