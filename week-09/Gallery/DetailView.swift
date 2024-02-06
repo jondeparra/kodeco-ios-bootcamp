@@ -14,19 +14,15 @@ struct DetailView: View {
         GeometryReader { geo in
             ScrollView {
                 VStack {
-                    ZStack {
-                        Color.black
-
-                        AsyncImage(url: URL(string: photo.src.large2x ?? photo.src.original)) { image in
-                            image.resizable()
-                                .scaledToFill()
-                                .frame(width: geo.size.width, height: geo.size.height * 0.5)
-                                .clipped()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(maxWidth: .infinity)
+                    AsyncImage(url: URL(string: photo.src.large2x ?? photo.src.original)) { image in
+                        image.resizable()
+                            .scaledToFill()
+                            .frame(width: geo.size.width, height: geo.size.height * 0.5)
+                            .clipped()
+                    } placeholder: {
+                        ProgressView()
                     }
+                    .frame(maxWidth: .infinity)
 
                     Text(photo.alt)
                         .padding(.horizontal, 16)

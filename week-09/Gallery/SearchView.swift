@@ -36,7 +36,7 @@ struct SearchView: View {
                             LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: geo.size.width * 0.33, maximum: geo.size.width * 0.5), spacing: 16), count: 2), spacing: 16) {
                                 ForEach(viewModel.photos) { photo in
                                     NavigationLink(destination: DetailView(photo: photo)) {
-                                        AsyncImage(url: URL(string: photo.src.medium ?? photo.src.original)) { image in
+                                        AsyncImage(url: URL(string: photo.src.original)) { image in
                                             image
                                                 .resizable()
                                                 .scaledToFill()
@@ -93,21 +93,27 @@ struct SearchView: View {
                     }
                 }
             }
-            .navigationTitle("Pexels Search")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    if !viewModel.photos.isEmpty {
-                        Button(role: .destructive, action: {
-                            withAnimation {
-                                viewModel.clearPhotos()
-                            }
-                            searchTerm = ""
-                        }, label: {
-                            Text("Clear")
-                        })
-                    }
+            .onChange(of: searchTerm) {
+                withAnimation {
+                    viewModel.clearPhotos()
                 }
             }
+            .navigationTitle("Pexels Search")
+            // MARK: - The toolbar won't show up since the onChange modifier is clearing the searchTerm
+//            .toolbar {
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    if !viewModel.photos.isEmpty {
+//                        Button(role: .destructive, action: {
+//                            withAnimation {
+//                                viewModel.clearPhotos()
+//                            }
+//                            searchTerm = ""
+//                        }, label: {
+//                            Text("Clear")
+//                        })
+//                    }
+//                }
+//            }
         }
     }
 }
